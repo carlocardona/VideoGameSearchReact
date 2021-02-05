@@ -16,6 +16,6 @@ export const loadDetail = (id) => async (dispatch) => {
             game: detailData.data,
             screen: screenShotData.data,
         }
-    })
-}
+    });
+};
 
