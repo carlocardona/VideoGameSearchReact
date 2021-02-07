@@ -7,7 +7,6 @@ import GlobalStyles from './components/GlobalStyles';
 //Router
 import { Route } from 'react-router-dom';
 
-
 function App() {
 
   return (

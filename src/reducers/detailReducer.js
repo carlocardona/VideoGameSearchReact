@@ -12,15 +12,15 @@ const detailReducer = ( state = initialState, action ) => {
                 game: action.payload.game,
                 screen: action.payload.screen,
                 isLoading: false,
-            }
+            };
         case "LOADING_DETAIL":
             return {
                 ...state,
                 isLoading: true,
-            }
+            };
         default: 
-            return{...state}
+            return{...state};
     }
-}
+};
 
 export default detailReducer;

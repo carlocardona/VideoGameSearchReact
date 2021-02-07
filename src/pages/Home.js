@@ -9,6 +9,7 @@ import Game from '../components/Game';
 import styled from 'styled-components';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import { fadeIn } from '../animations';
 
 
 const Home = () => {
@@ -16,35 +17,38 @@ const Home = () => {
     const location = useLocation();
     const pathID = location.pathname.split('/')[2];
     
+    //Fetch Games
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadGames());
     }, [dispatch])
+
     //Get Data from state
-    const { popular, newGames, upcoming, searched } = useSelector(state => state.games);
+    const { popular, newGames, upcoming, searched } = useSelector((state) => state.games);
+
     return(
-        <GameList>
+        <GameList variants={fadeIn} initial="hidden" animate="show">
             <AnimateSharedLayout type="crossfade">
                 <AnimatePresence> { pathID && <GameDetail pathID={pathID}/> } </AnimatePresence>
                 {searched.length ? (
                 <div className="searched">
                     <h2>Searched</h2>
                         <Games>
-                            { searched.map(game => (
+                            { searched.map((game) => (
                                 <Game 
                                     name={game.name} 
                                     released={game.released} 
                                     id={game.id} 
                                     image={game.background_image}
                                     key={game.id}
-                                    />
+                                />
                             ))}
                         </Games>
-                </div> ) : ''}
+                </div> ) : ("")}
                 <h2>Upcoming Games</h2>
                     <Games>
-                        { upcoming.map(game => (
+                        { upcoming.map((game) => (
                             <Game 
                                 name={game.name} 
                                 released={game.released} 
@@ -56,7 +60,7 @@ const Home = () => {
                     </Games>
                     <h2>Popular Games</h2>
                     <Games>
-                        {popular.map(game => (
+                        {popular.map((game) => (
                             <Game 
                                 name={game.name} 
                                 released={game.released} 
@@ -68,7 +72,7 @@ const Home = () => {
                     </Games>
                     <h2>New Games</h2>
                     <Games>
-                        {newGames.map(game => (
+                        {newGames.map((game) => (
                             <Game 
                                 name={game.name} 
                                 released={game.released} 
@@ -81,7 +85,7 @@ const Home = () => {
             </AnimateSharedLayout>
         </GameList>   
     );
-}
+};
 
 const GameList = styled(motion.div)`
     padding: 0rem 5rem;

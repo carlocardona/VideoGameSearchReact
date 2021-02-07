@@ -17,9 +17,9 @@ import gamepad from '../img/gamepad.svg';
 import starEmpty from '../img/star-empty.png';
 import starFull from '../img/star-full.png';
 
-
-const GameDetail = ({pathID}) => {
+const GameDetail = ({ pathID }) => {
     const history = useHistory();
+
     //Exit Detail
     const exitDetailHandler = (e) => {
         const element = e.target;
@@ -75,7 +75,7 @@ const GameDetail = ({pathID}) => {
                             <Info>
                                 <h3>Platforms</h3>
                                 <Platforms>
-                                    { game.platforms.map ( data => (
+                                    { game.platforms.map (( data ) => (
                                         <img 
                                         alt={data.platform.name}
                                         key={data.platform.id} 
@@ -85,13 +85,16 @@ const GameDetail = ({pathID}) => {
                             </Info>
                         </Stats>
                         <Media>
-                            <motion.img layoutId={`image ${pathID}`} src={ smallImage( game.background_image, 1280 ) } alt={ game.background_image }/>
+                            <motion.img 
+                                layoutId={`image ${pathID}`} 
+                                src={ smallImage( game.background_image, 1280 ) } 
+                                alt={ game.background_image }/>
                         </Media>
                         <Description >
                             <p> { game.description_raw } </p>
                         </Description >
                         <div className="gallery">
-                            { screen.results.map( screen => (
+                            { screen.results.map( (screen) => (
                                 <img src= { smallImage( screen.image, 1280 )} key= { screen.id } alt={ screen.image } />
                             ))}
                         </div>
