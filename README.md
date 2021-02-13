@@ -1,4 +1,4 @@
-#Video Game Search
+# Video Game Search
 
 ![Video Game Search](https://github.com/carlocardona/VideoGameSearchReact/blob/master/Assets/VideoGameSearch.gif)
 
